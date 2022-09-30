@@ -1,0 +1,150 @@
+<html>
+<!-- {} -->
+<head> 
+    <title> Retreat </title>
+    
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+    <div class="grid" style="grid-template-columns: 10% 80% 10%">
+
+        <div class="grid-item" style="background-color: goldenrod"></div>
+
+        <div class="grid-item" style="text-align: center">
+
+            select appliance <br><br>
+
+            <select id="listAppliance" onchange="getSelectedValueAppliance();">
+
+                <option value="0"></option>
+                <option value=1600>Aspirapolvere</option>
+                <option value="3000">Forno</option>
+                <option value="2400">Lavapiatti</option>
+                <option value="2100">Lavatrice</option>
+
+            </select>
+
+            <script>
+
+                function getSelectedValueAppliance(){
+                    
+                    var SelectedValue = document.getElementById("listAppliance").value;
+                    console.log(SelectedValue);
+
+                    sessionStorage.setItem("appliance", SelectedValue);
+                    console.log(SelectedValue);
+
+                }
+
+            </script>
+
+            <br><br>
+
+            select usage duration <br><br>
+
+            <select id="listDuration" onchange="getSelectedValueDuration();">
+
+                <option value="0"></option>
+                <option value=0.25>15 minuti</option>
+                <option value="0.50">30 minuti</option>
+                <option value="0.75">45 minuti</option>
+                <option value="1.00">1 ora</option>
+                <option value="1.25">1 ora e 15 minuti</option>
+                <option value="1.50">1 ora e 30 minuti</option>
+                <option value="1.75">1 ora e 45 minuti</option>
+                <option value="2.00">2 ore</option>
+                <option value="2.25">2 ora e 15 minuti</option>
+                <option value="2.50">2 ora e 30 minuti</option>
+                <option value="2.75">2 ora e 45 minuti</option>
+                <option value="3.00">3 ore</option>
+
+            </select>
+
+            <script>
+
+                function getSelectedValueDuration(){
+
+                    var SelectedValue = document.getElementById("listDuration").value;
+                    console.log(SelectedValue);
+
+                    sessionStorage.setItem("duration", SelectedValue);
+
+
+                    }
+
+            </script>
+
+            <br><br>
+
+            after clicking to pass to URL, retrieve the data
+
+            <br><br>
+
+            <input type="button" onclick = "PassToURL()" value="click this button">
+
+            <input type="button" onclick = "GetFromURL()" value="and then click this other button"> 
+
+
+            <script>
+
+
+
+                function PassToURL(){
+            
+                    var appliance = sessionStorage.getItem("appliance");
+                    var duration = sessionStorage.getItem("duration");
+                    var day = "400";
+            
+                    var parameters = new URLSearchParams ();
+                    parameters.append("appliance", appliance);
+                    parameters.append("duration", JSON.stringify(duration));
+                    parameters.append("day", JSON.stringify(day));
+            
+                    location.href = window.location.search +"?" + parameters.toString();
+                    }
+            
+            </script>
+            
+            <script>
+            
+            function GetFromURL(){
+            
+                var parameters = new URLSearchParams (window.location.search);
+                var appliance = parameters.get("appliance");
+                var duration = JSON.parse(parameters.get("duration"));
+                var day = JSON.parse(parameters.get("day"));
+        
+                var cost = appliance/1000/1000*duration*day;
+        
+                console.log(appliance);
+                console.log(duration);
+                console.log(day);
+                console.log(cost);
+        
+                document.getElementById("cost").innerHTML = cost;
+        
+            }
+                        
+            </script>
+
+            <br><br>
+
+            the cost of the usage of this appliance is <p id="cost"></p> EUR
+
+            <br><br>
+            ---
+            <br><br>
+
+        </div>
+
+        <div class="grid-item" style="background-color: goldenrod"></div>           
+
+    </div>
+    
+</body>
+
+</html>
+
