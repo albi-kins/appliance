@@ -1,13 +1,11 @@
 <html>
 <!-- {} -->
-
 <head> 
     <title> Retreat </title>
     
     <link rel="stylesheet" href="styles.css">
 
-</head>    
-    
+</head>
 
 <body>
 
@@ -22,7 +20,7 @@
             <select id="listAppliance" onchange="getSelectedValueAppliance();">
 
                 <option value="0"></option>
-                <option value=1600>Aspirapolvere</option>
+                <option value="1600">Aspirapolvere</option>
                 <option value="3000">Forno</option>
                 <option value="2400">Lavapiatti</option>
                 <option value="2100">Lavatrice</option>
@@ -89,10 +87,10 @@
 
             <input type="button" onclick = "GetFromURL()" value="and then click this other button"> 
 
+            <br><br>
+
 
             <script>
-
-
 
                 function PassToURL(){
             
@@ -136,12 +134,36 @@
 
             the cost of the usage of this appliance is <p id="cost"></p> EUR
 
+            <br><br>            
+
+            <input type="button" onclick = "Refresh()" value="click here to try new appliance"> 
+
+            <script>
+
+                function Refresh(){
+            
+                    sessionStorage.clear();
+            
+                    location.href = "Home.html";
+
+                    }
+            
+            </script>
+
             <br><br>
             ---
             <br><br>
-            
-            <div style="background-image: url(https://media-exp1.licdn.com/dms/image/C4D03AQH-5o4rqyFKaA/profile-displayphoto-shrink_400_400/0/1599517370198?e=1669852800&v=beta&t=XvMdZas10AQC1troy_PapNJJMoaQCcE3Y_hM60esfCI)"></div>
 
+            <div class="grid" style="grid-template-columns: 33.33% 33.33% 33.33% ">
+
+            <div class=grid-item" style="height: 400px; float: left;background-size:contain; background-repeat: no-repeat; background-image: url(https://cf.bstatic.com/xdata/images/hotel/max1024x768/322199904.jpg?k=d56d291177c877a5f6757ffe9da100de7ef31e1134ee07b292729cc248cc83d9&o=&hp=1)"></div>
+            <div class=grid-item" style="font-weight: bold; float: left; text-align: center"><br><br><br>MBS now is an algo firm<br><br> :)</div>
+            <div class=grid-item" style="height: 400px; float: right;background-size:contain; background-repeat: no-repeat; background-image: url(https://cf.bstatic.com/xdata/images/hotel/max1024x768/322199904.jpg?k=d56d291177c877a5f6757ffe9da100de7ef31e1134ee07b292729cc248cc83d9&o=&hp=1)"></div>
+
+
+            </div>
+
+            
         </div>
 
         <div class="grid-item" style="background-color: goldenrod"></div>           
@@ -151,4 +173,3 @@
 </body>
 
 </html>
-
