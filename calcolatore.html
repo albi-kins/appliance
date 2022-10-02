@@ -1,0 +1,235 @@
+<html>
+
+<head> 
+    <title> Retreat </title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <script src="calculations.js"></script>
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+
+    <div class="grid" style="grid-template-columns: 10% 80% 10%">
+
+        <div class="grid-item"></div>
+
+        <div class="grid-item" style="text-align: center">
+
+            <br><br>
+
+            <span style="font-weight: bold; font-size: x-large"> Benvenuto sul calcolatore dei consumi elettrici</span> <br><br>
+
+            <div class="horizontal-line" style="border-color: black"></div>
+
+            <br>
+            
+            <div class="container">
+
+                <br>
+
+                Seleziona l'elettrodomestico 
+
+                <select id="listApplianceConsumption" style="padding: 5px; border-radius: 6px" onchange="getSelectedValueApplianceConsumption();">
+
+                    <option value="0"></option>
+                    <option value="1600">Aspirapolvere</option>
+                    <option value="3000">Forno</option>
+                    <option value="2400">Lavapiatti</option>
+                    <option value="2100">Lavatrice</option>
+
+                </select>
+
+                <script>
+
+                    function getSelectedValueApplianceConsumption(){
+                        
+                        var SelectedValue = document.getElementById("listApplianceConsumption").value;
+                        console.log(SelectedValue);
+
+                        sessionStorage.setItem("applianceConsumption", SelectedValue);
+                        console.log(SelectedValue);
+
+                    }
+
+                </script>
+
+                <br><br>
+
+                Scegli il giorno in cui lo vuoi utilizzare 
+
+                <select id="listDay" style="padding: 5px; border-radius: 6px" onchange="getSelectedValueDay();">
+
+                    <option value="0"></option>
+                    <option value="0">Oggi</option>
+
+                </select>
+
+                <script>
+
+                    function getSelectedValueDay(){
+                        
+                        var SelectedValue = document.getElementById("listDay").value;
+                        console.log(SelectedValue);
+
+                        sessionStorage.setItem("day", SelectedValue);
+                        console.log(SelectedValue);
+
+                    }
+
+                </script>
+
+                <br><br>
+
+                Specifica a partire da che ora lo utilizzerai 
+
+                <select id="listStartHour" style="padding: 5px; border-radius: 6px" onchange="getSelectedValueStartHour();">
+
+                    <option value="0"></option>
+                    <option value="08">08:00</option>
+                    <option value="09">09:00</option>
+                    <option value="10">10:00</option>
+                    <option value="11">11:00</option>
+                    <option value="12">12:00</option>
+                    <option value="13">13:00</option>
+                    <option value="14">14:00</option>
+                    <option value="15">15:00</option>
+                    <option value="16">16:00</option>
+                    <option value="17">17:00</option>
+                    <option value="18">18:00</option>
+                    <option value="19">19:00</option>
+                    <option value="20">20:00</option>
+                    <option value="21">21:00</option>
+                    <option value="22">22:00</option>
+                    <option value="23">23:00</option>
+                    <option value="00">00:00</option>
+                    <option value="01">01:00</option>
+                    <option value="02">02:00</option>
+                    <option value="03">03:00</option>
+                    <option value="04">04:00</option>
+                    <option value="05">05:00</option>
+                    <option value="06">06:00</option>
+                    <option value="07">07:00</option>
+
+                </select>
+
+                <script>
+
+                    function getSelectedValueStartHour(){
+
+                        var SelectedValue = document.getElementById("listStartHour").value;
+                        console.log(SelectedValue);
+
+                        sessionStorage.setItem("startHour", SelectedValue);
+                        console.log(SelectedValue);
+
+                        }
+
+                </script>
+
+                <br><br>
+
+                Indica la durata dell'utilizzo 
+
+                <select id="listDurationInHours" style="padding: 5px; border-radius: 6px" onchange="getSelectedValueDuration();">
+
+                    <option value="0"></option>
+                    <option value="0.25">15 minuti</option>
+                    <option value="0.50">30 minuti</option>
+                    <option value="0.75">45 minuti</option>
+                    <option value="1.00">1 ora</option>
+                    <option value="1.25">1 ora e 15 minuti</option>
+                    <option value="1.50">1 ora e 30 minuti</option>
+                    <option value="1.75">1 ora e 45 minuti</option>
+                    <option value="2.00">2 ore</option>
+                    <option value="2.25">2 ora e 15 minuti</option>
+                    <option value="2.50">2 ora e 30 minuti</option>
+                    <option value="2.75">2 ora e 45 minuti</option>
+                    <option value="3.00">3 ore</option>
+
+                </select>
+
+                <script>
+
+                    function getSelectedValueDuration(){
+
+                        var SelectedValue = document.getElementById("listDurationInHours").value;
+                        console.log(SelectedValue);
+
+                        sessionStorage.setItem("durationInHours", SelectedValue);
+                        console.log(SelectedValue);
+
+                        }
+
+                </script>
+
+                <br><br>
+                ---
+                <br><br>
+
+                <center>
+                <div class="button" style="width: 200px; background-color: #006E6E; color: white" onclick = "compute()">Calcola costo</div>
+                </center>
+                
+                <br>
+                ---
+                <br><br>
+
+                Il costo di mercato per l'utilizzo di questo elettrodomestico è: <br><br>
+                
+                <span style="font-weight: bold">€ <span id="costTotal">.....</span></span> <br><br>
+
+            </div>
+
+            <br>
+
+            <div class="container">
+
+                <div style="margin-left: 50px; margin-right: 50px">
+
+                    <span style="font-size: small"> Cosa intendiamo con "costo di mercato"? <br><br>
+                    Il "costo di mercato" è il costo che sosterrà il tuo fornitore di energia elettrica quando tu utilizzerai il tuo elettrodomestico.<br>
+                    Il costo che ti verrà addebitato in bolletta potrà essere leggermente diverso, a seconda del tuo contratto di fornitura. <br><br>
+                    --<br><br>
+                    Se vuoi stime di costo più precise, inserisci alcune informazioni sulla tua bolletta nella nostra <a href="#">sezione di ottimizzazione</a>. <br><br>
+                    --<br><br>
+                    Se vuoi confrontare la tua bolletta con offerte potenzialmente più vantaggiose, vai alla nostra <a href="#">sezione di confronto</a>.</span>
+                
+                </div>
+            </div>
+
+            <br>
+
+            <div class="container">
+
+                <center>
+                Il calcolatore dei consumi elettrici è main partner di: <br><br>
+                <img alt="mbs-icon" style="width: 100px; height: auto; background-size: contain" src="https://www.mbsconsulting.com/wp-content/uploads/2020/06/MBS-logo.png"><br><br>
+                (an <span style="font-weight:bold">algo</span> Cerved company)
+                </center>
+
+            </div>
+
+            <br><br>
+            ---
+            <br><br>
+
+            <div class="grid" style="grid-template-columns: 33.33% 33.33% 33.33% ">
+
+            <div class=grid-item" style="height: 400px; float: left; background-size:contain; background-repeat: no-repeat; background-image: url(https://cf.bstatic.com/xdata/images/hotel/max1024x768/322199904.jpg?k=d56d291177c877a5f6757ffe9da100de7ef31e1134ee07b292729cc248cc83d9&o=&hp=1)"></div>
+            <div class=grid-item" style="font-weight: bold; float: left; text-align: center"><br><br><br>MBS now is an algo firm<br><br> :)</div>
+            <div class=grid-item" style="height: 400px; float: right; background-size:contain; background-repeat: no-repeat; background-image: url(https://cf.bstatic.com/xdata/images/hotel/max1024x768/322199904.jpg?k=d56d291177c877a5f6757ffe9da100de7ef31e1134ee07b292729cc248cc83d9&o=&hp=1)"></div>
+
+
+            </div>
+        
+        </div>
+
+        <div class="grid-item"></div>           
+
+    </div>
+    
+</body>
+
+</html>
