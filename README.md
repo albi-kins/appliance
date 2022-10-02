@@ -1,4 +1,4 @@
-# appliance
-calculator of appliance cost
+# calcolatore dei consumi elettrici
+seleziona il tuo elettrodomestico e inizia a calcolare il costo del suo utilizzo
 
 [link](calcolatore.html)
